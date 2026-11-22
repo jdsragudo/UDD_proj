@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="matcha">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25:00 • Focus — Komorebi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="ambient-backdrop" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="paper-grain"></div>
+  </div>
+
+  <div class="app-shell" id="appShell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.5" opacity="0.35" />
+            <path d="M16 6C20.5 10 22.5 14.5 22.5 19C22.5 22.6 19.6 25.5 16 25.5C12.4 25.5 9.5 22.6 9.5 19C9.5 14.5 11.5 10 16 6Z" fill="currentColor" opacity="0.16" />
+            <path d="M16 7.5V25M16 14L20 11M16 18.5L12 15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </span>
+        <div>
+          <h1 class="brand-name">Komorebi</h1>
+          <p class="brand-subtitle">Calm Focus Sanctuary</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="theme-switcher" role="group" aria-label="Color palette">
+          <button class="theme-dot" data-theme-choice="matcha" title="Warm Matcha (Light)" aria-label="Warm Matcha theme">
+            <span class="swatch swatch-matcha"></span>
+          </button>
+          <button class="theme-dot" data-theme-choice="coastal" title="Coastal Mist (Cool)" aria-label="Coastal Mist theme">
+            <span class="swatch swatch-coastal"></span>
+          </button>
+          <button class="theme-dot" data-theme-choice="dusk" title="Dusk Lavender (Evening)" aria-label="Dusk Lavender theme">
+            <span class="swatch swatch-dusk"></span>
+          </button>
+        </div>
+
+        <button class="icon-pill" id="zenToggleBtn" title="Toggle Zen Mode (Z)" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+          </svg>
+          <span>Zen</span>
+        </button>
+
+        <button class="icon-btn" id="muteBtn" title="Mute / Unmute audio (M)" aria-label="Toggle mute" aria-pressed="false">
+          <svg class="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg class="icon-sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" id="settingsBtn" title="Timer & Preferences" aria-label="Open settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="workspace-grid">
+      <!-- Primary Timer Stage -->
+      <section class="card timer-stage" aria-label="Pomodoro Timer">
+        <div class="mode-tabs" role="tablist" aria-label="Timer modes">
+          <button class="mode-tab active" role="tab" aria-selected="true" data-mode="focus">Focus</button>
+          <button class="mode-tab" role="tab" aria-selected="false" data-mode="shortBreak">Short Break</button>
+          <button class="mode-tab" role="tab" aria-selected="false" data-mode="longBreak">Long Break</button>
+        </div>
+
+        <div class="active-intention" id="activeIntentionBanner">
+          <span class="intention-dot"></span>
+          <span class="intention-label" id="activeIntentionText">Set an intention from your list, or simply breathe &amp; begin.</span>
+        </div>
+
+        <div class="timer-ring-wrapper" id="timerRingWrapper">
+          <div class="breathing-halo" aria-hidden="true"></div>
+          <svg class="timer-svg" viewBox="0 0 300 300" aria-hidden="true">
+            <circle class="ring-track" cx="150" cy="150" r="130" />
+            <circle class="ring-progress" id="ringProgress" cx="150" cy="150" r="130" />
+          </svg>
+          <div class="timer-readout">
+            <span class="phase-caption" id="phaseCaption">Deep Focus</span>
+            <time class="timer-digits" id="timerDisplay" aria-live="off">25:00</time>
+            <div class="cycle-dots" id="cycleDots" title="Pomodoro cycle progress"></div>
+          </div>
+        </div>
+
+        <div class="timer-controls">
+          <button class="control-secondary" id="resetBtn" title="Reset timer (R)" aria-label="Reset timer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+          </button>
+
+          <button class="control-primary" id="startPauseBtn">
+            <span id="startPauseLabel">Start Focus</span>
+          </button>
+
+          <button class="control-secondary" id="skipBtn" title="Skip to next phase" aria-label="Skip to next phase">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 4 15 12 5 20 5 4"></polygon>
+              <line x1="19" y1="5" x2="19" y2="19"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="ambient-bar" aria-label="Ambient soundscape">
+          <div class="ambient-header">
+            <span class="ambient-title">Soundscape</span>
+            <div class="volume-control">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <input type="range" id="ambientVolumeSlider" min="0" max="100" value="35" aria-label="Ambient volume" />
+            </div>
+          </div>
+          <div class="ambient-chips" id="ambientChips">
+            <button class="chip active" data-sound="none">Silent</button>
+            <button class="chip" data-sound="rain">Soft Rain</button>
+            <button class="chip" data-sound="warmth">Hearth</button>
+            <button class="chip" data-sound="breeze">Forest Breeze</button>
+            <button class="chip" data-sound="hum">Warm Hum</button>
+          </div>
+        </div>
+
+        <button class="mindful-quote" id="quoteBtn" title="Click for another reflection">
+          <span id="quoteText">“Do one thing at a time, slowly and with full attention.”</span>
+        </button>
+
+        <p class="shortcut-hints" aria-hidden="true">
+          <span><kbd>Space</kbd> Start / Pause</span>
+          <span><kbd>R</kbd> Reset</span>
+          <span><kbd>Z</kbd> Zen Mode</span>
+          <span><kbd>M</kbd> Mute</span>
+        </p>
+      </section>
+
+      <!-- Side Column: Rhythm & Tasks -->
+      <aside class="side-column" id="sideColumn">
+        <section class="card stats-card" aria-label="Today's Rhythm">
+          <div class="card-header">
+            <h2 class="card-title">Today’s Rhythm</h2>
+            <span class="date-pill" id="todayDateLabel">Today</span>
+          </div>
+
+          <div class="metrics-row">
+            <div class="metric">
+              <span class="metric-value" id="statSessions">0</span>
+              <span class="metric-label">Sessions</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric">
+              <span class="metric-value" id="statMinutes">0m</span>
+              <span class="metric-label">Deep Focus</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric">
+              <span class="metric-value" id="statCycle">1 / 4</span>
+              <span class="metric-label">Cycle</span>
+            </div>
+          </div>
+
+          <div class="week-chart" id="weekChart" aria-label="7-day focus minutes"></div>
+        </section>
+
+        <section class="card tasks-card" aria-label="Focus Intentions">
+          <div class="card-header">
+            <h2 class="card-title">Intentions</h2>
+            <button class="text-btn hidden" id="clearCompletedBtn">Clear done</button>
+          </div>
+
+          <form class="task-form" id="taskForm">
+            <input
+              type="text"
+              id="taskInput"
+              class="task-input"
+              placeholder="What deserves your calm attention?"
+              maxlength="140"
+              autocomplete="off"
+            />
+            <div class="task-form-footer">
+              <div class="est-stepper" title="Estimated Pomodoro sessions">
+                <span class="est-label">Est. sessions</span>
+                <button type="button" class="step-btn" id="estDecBtn" aria-label="Decrease estimate">−</button>
+                <span class="est-value" id="estValue">1</span>
+                <button type="button" class="step-btn" id="estIncBtn" aria-label="Increase estimate">+</button>
+              </div>
+              <button type="submit" class="add-task-btn">Add</button>
+            </div>
+          </form>
+
+          <ul class="task-list" id="taskList"></ul>
+
+          <div class="empty-tasks" id="emptyTasks">
+            <p>Your slate is clear. Add a quiet goal above to anchor your next focus block.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="settingsModalTitle">Timer &amp; Sanctuary Settings</h2>
+        <button class="icon-btn" id="closeSettingsBtn" aria-label="Close settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="settingsForm" class="settings-form">
+        <div class="settings-section">
+          <h3>Durations (minutes)</h3>
+          <div class="duration-grid">
+            <label class="field">
+              <span>Focus</span>
+              <input type="number" id="settingFocusMin" min="1" max="120" required />
+            </label>
+            <label class="field">
+              <span>Short Break</span>
+              <input type="number" id="settingShortMin" min="1" max="60" required />
+            </label>
+            <label class="field">
+              <span>Long Break</span>
+              <input type="number" id="settingLongMin" min="1" max="90" required />
+            </label>
+            <label class="field">
+              <span>Long Break After</span>
+              <input type="number" id="settingInterval" min="2" max="10" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Flow &amp; Gentle Cues</h3>
+          <label class="toggle-row">
+            <span>Auto-start breaks when focus ends</span>
+            <input type="checkbox" id="settingAutoBreaks" />
+          </label>
+          <label class="toggle-row">
+            <span>Auto-start focus when break ends</span>
+            <input type="checkbox" id="settingAutoFocus" />
+          </label>
+          <label class="toggle-row">
+            <span>Play singing bowl chime on completion</span>
+            <input type="checkbox" id="settingChimeEnabled" />
+          </label>
+          <div class="range-row">
+            <span>Chime volume</span>
+            <div class="range-inline">
+              <input type="range" id="settingChimeVol" min="0" max="100" />
+              <button type="button" class="text-btn" id="testChimeBtn">Test</button>
+            </div>
+          </div>
+          <label class="toggle-row">
+            <span>Desktop notifications</span>
+            <input type="checkbox" id="settingNotifications" />
+          </label>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-ghost" id="resetDefaultsBtn">Reset defaults</button>
+          <button type="submit" class="btn-save">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Gentle completion toast -->
+  <div class="toast hidden" id="toastBanner" role="status" aria-live="polite"></div>
+
+  <script src="src/timer-core.js"></script>
+  <script src="src/audio-engine.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

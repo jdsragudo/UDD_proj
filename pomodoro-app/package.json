@@ -1,0 +1,17 @@
+{
+  "name": "komorebi-focus",
+  "version": "1.0.0",
+  "description": "A calm, aesthetic productivity and Pomodoro timer web application.",
+  "scripts": {
+    "dev": "python3 -m http.server 5173",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "pomodoro",
+    "productivity",
+    "focus",
+    "timer",
+    "calm"
+  ],
+  "license": "MIT"
+}
